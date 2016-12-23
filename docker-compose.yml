@@ -32,7 +32,7 @@ services:
   ci:
     extends:
       service: app
-    command: [bash, -c, "sleep 5 && rake test"]
+    command: [bash, -c, "sleep 5 && rake db:create test"]
     environment:
       DB_NAME: ci
     depends_on:
