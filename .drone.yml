@@ -6,4 +6,4 @@ pipeline:
     commands:
       - docker-compose build ci
       - docker-compose run --rm ci
-      - docker-compose rm -f -v
+      - docker-compose stop && docker-compose rm -f -v
