@@ -4,6 +4,6 @@ pipeline:
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
     commands:
-      - docker-compose build
-      - docker-compose run web rake test
+      - docker-compose build app
+      - docker-compose run app rake test
       - docker-compose rm -f -v
