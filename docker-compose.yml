@@ -2,7 +2,6 @@ version: '2'
 services:
   app:
     build: .
-    command: bundle exec rails s -p 3000 -b '0.0.0.0'
     environment:
       DB_HOST: db
       DB_NAME: postgres
@@ -11,8 +10,29 @@ services:
   dev:
     extends:
       service: app
+    command: rails s -p 3000 -b '0.0.0.0'
     volumes:
       - .:/usr/src/app
+    environment:
+      DB_NAME: dev
+    depends_on:
+      - db
+
+  test:
+    extends:
+      service: app
+    command: rake test
+    volumes:
+      - .:/usr/src/app
+    environment:
+      DB_NAME: test
+    depends_on:
+      - db
+
+  ci:
+    extends:
+      service: app
+    command: rake test
     depends_on:
       - db
 
