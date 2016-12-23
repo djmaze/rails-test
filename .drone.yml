@@ -4,4 +4,6 @@ pipeline:
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
     commands:
-      - bin/ci
+      - docker-compose build ci
+      - docker-compose run --rm ci
+      - docker-compose stop -t 5 && docker-compose rm -f -v
