@@ -1,12 +1,7 @@
-services:
-  docker:
-    image: docker:1.12-dind
-    privileged: true
-
 pipeline:
   build:
     image: docteurklein/compose-ci
-    environment:
-      - DOCKER_HOST=tcp://0.0.0.0:2375
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
     commands:
       - docker-compose run web rake test
