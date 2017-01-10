@@ -1,5 +1,7 @@
 # README
 
+[![Build Status](https://drone.swarm.strahlungsfrei.de/api/badges/djmaze/rails-test/status.svg)](https://drone.swarm.strahlungsfrei.de/djmaze/rails-test)
+
 This README would normally document whatever steps are necessary to get the
 application up and running.
 
