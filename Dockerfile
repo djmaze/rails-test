@@ -7,7 +7,14 @@ RUN mkdir /root/.ssh \
 
 COPY Gemfile /usr/src/app/Gemfile
 COPY Gemfile.lock /usr/src/app/Gemfile.lock
+COPY vendor/cache /usr/src/app/vendor/cache
 WORKDIR /usr/src/app
-RUN test -f vendor/cache/* && bundle install --local -j 4 || bundle install -j 4
+ARG SSH_KEY
+RUN test "$SSH_KEY" \
+ && (echo "$SSH_KEY" >>/root/.ssh/id_rsa \
+ && chmod 0600 /root/.ssh/id_rsa \
+ && bundle install -j 4 \
+ && rm /root/.ssh/id_rsa) \
+ || bundle install --local -j 4
 
 COPY . /usr/src/app

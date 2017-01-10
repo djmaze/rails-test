@@ -30,6 +30,9 @@ services:
       - db
 
   ci:
+    build:
+      args:
+        - SSH_KEY
     extends:
       service: app
     command: [bash, -c, "sleep 5 && rake db:create test"]
