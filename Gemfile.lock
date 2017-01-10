@@ -1,3 +1,9 @@
+GIT
+  remote: git@github.com:djmaze/ruby-test-gem.git
+  revision: afc564108d58c88869dac4c660aecb2ae183e94e
+  specs:
+    hola (0.0.1)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -156,6 +162,7 @@ PLATFORMS
 DEPENDENCIES
   byebug
   coffee-rails (~> 4.2)
+  hola!
   jbuilder (~> 2.5)
   jquery-rails
   listen (~> 3.0.5)
@@ -171,4 +178,4 @@ DEPENDENCIES
   web-console
 
 BUNDLED WITH
-   1.13.6
+   1.13.7

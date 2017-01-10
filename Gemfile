@@ -29,6 +29,10 @@ gem 'jbuilder', '~> 2.5'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
+#
+
+# Test gem from private Github repo
+gem 'hola', git: 'git@github.com:djmaze/ruby-test-gem.git'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
