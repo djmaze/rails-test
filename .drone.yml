@@ -4,6 +4,7 @@ pipeline:
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
     commands:
+      - mkdir /root/.ssh && echo "$SSH_KEY" >/root/.ssh/id_rsa && chmod 0600 /root/.ssh/id_rsa
       - docker-compose build ci
       - docker-compose run --rm ci
       - docker-compose down --volumes --remove-orphans
