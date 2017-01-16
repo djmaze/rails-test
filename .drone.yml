@@ -3,6 +3,8 @@ pipeline:
     image: mazzolino/docker-compose
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
+    environment:
+      COMPOSE_PROJECT_NAME: drone_build_${DRONE_REPO}_${DRONE_BUILD_NUMBER}
     commands:
       - docker-compose build ci
       - docker-compose run --rm ci
@@ -11,6 +13,8 @@ pipeline:
     image: mazzolino/docker-compose
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
+    environment:
+      COMPOSE_PROJECT_NAME: drone_build_${DRONE_REPO}_${DRONE_BUILD_NUMBER}
     commands:
       - docker-compose down --volumes --remove-orphans
     when:
