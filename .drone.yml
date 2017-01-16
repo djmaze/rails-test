@@ -6,4 +6,13 @@ pipeline:
     commands:
       - docker-compose build ci
       - docker-compose run --rm ci
+
+  cleanup:
+    image: mazzolino/docker-compose
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    commands:
       - docker-compose down --volumes --remove-orphans
+    when:
+      status: [ success, killed, failure ]
+
